@@ -17,7 +17,7 @@
 
 ---
 
-[ [English](../README.md) | ภาษาไทย | [日本語](./README.ja.md) | [简体中文](./locales/README.zh.md) ]
+[ [English](../README.md) | ภาษาไทย | [日本語](./README.ja.md) | [简体中文](./README.zh.md) ]
 
 vtuber-brain เป็นฝั่ง Director ของการแยก Director/Performer (ADR-001 ใน repo_plus.yml) รับ context (chat, audience signal, internal state) ทำ reasoning + memory retrieval เลือก persona + skill ที่จะเรียก แล้ว emit ConversationDirective (text_prompt + voice_prompt) ไป vtuber-voice ผ่าน gRPC — skill (game/sing/policy/strategy) ลงทะเบียนเป็น typed tool และ brain dispatch ผ่าน tool-use protocol memory อยู่บน Postgres + pgvector; character lore โหลดจาก vtuber-commons; Mojo ดูแล hot inference kernel (RAG re-rank, intent classification); Python serve LLM (Ollama/vLLM)
 
