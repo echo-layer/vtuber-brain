@@ -19,14 +19,17 @@
 
 [ [English](../README.md) | [ภาษาไทย](./README.th.md) | 日本語 | [简体中文](./README.zh.md) ]
 
-> [AI: TRANSLATE the professional tagline/description into JAPANESE here]
-vtuber-brain is the Director half of the Director/Performer split (ADR-001 in repo_plus.yml). It receives context (chat, audience signal, internal state), runs reasoning and memory retrieval, decides which persona to wear and which skill to invoke, then emits a ConversationDirective containing text_prompt and voice_prompt to vtuber-voice via gRPC. Skills (game/sing/policy/strategy) register as typed tools and brain dispatches via tool-use protocol. Long-term memory lives in Postgres with pgvector; character lore loads from vtuber-commons at startup. Mojo handles hot inference kernels (RAG re-rank, intent classification); Python serves the underlying LLM (Ollama or vLLM).
+vtuber-brain は Director/Performer 分離 (ADR-001) の Director 側。context (chat、audience シグナル、内部状態) を受けて reasoning と memory 検索を行い、どの persona と skill を呼ぶか決定し、ConversationDirective (text_prompt + voice_prompt) を gRPC 経由で vtuber-voice に emit する。skill (game/sing/policy/strategy) は typed tool として登録され、brain が tool-use プロトコルで dispatch する。長期メモリは Postgres + pgvector、character lore は vtuber-commons から startup 時ロード。Mojo がホット推論カーネル (RAG re-rank、intent 分類) を担当し、Python が LLM (Ollama/vLLM) をサーブする。
 
 ## ✨ 特徴 (Features)
-> [AI: TRANSLATE all 3 Features into JAPANESE here]
+- 🚀 **Director ループ — context 受信 → persona 選択 → ConversationDirective で text_prompt + voice_prompt を vtuber-voice に emit**
+- 🛡️ **Skill ルーター — typed gRPC contract で game / sing / policy / strategy に tool call を dispatch**
+- 📊 **階層化メモリ — short-term (会話内 in-process)、long-term (Postgres + pgvector)、character lore (startup 時 vtuber-commons からロード)**
 
 ## 🛠️ クイックスタート (Quick Start)
-> [AI: TRANSLATE getting_started_instructions into JAPANESE here]
+```bash
+# Rust toolchain (rustup)、Python 3.12+、pgvector 拡張付き Postgres 16+ をインストールし、cargo build と pip install -r python/requirements.txt を実行。.env に OLLAMA_HOST または VLLM_URL を設定後、cargo run で brain をポート 8081 で起動
+```
 
 ## 🗺️ ナวิゲーション (Navigation)
 - 🏗️ **[アーキテクチャ (Architecture)](../ARCHITECTURE.md)**

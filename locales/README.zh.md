@@ -19,14 +19,17 @@
 
 [ [English](../README.md) | [ภาษาไทย](./README.th.md) | [日本語](./README.ja.md) | 简体中文 ]
 
-> [AI: TRANSLATE the professional tagline/description into SIMPLIFIED CHINESE here]
-vtuber-brain is the Director half of the Director/Performer split (ADR-001 in repo_plus.yml). It receives context (chat, audience signal, internal state), runs reasoning and memory retrieval, decides which persona to wear and which skill to invoke, then emits a ConversationDirective containing text_prompt and voice_prompt to vtuber-voice via gRPC. Skills (game/sing/policy/strategy) register as typed tools and brain dispatches via tool-use protocol. Long-term memory lives in Postgres with pgvector; character lore loads from vtuber-commons at startup. Mojo handles hot inference kernels (RAG re-rank, intent classification); Python serves the underlying LLM (Ollama or vLLM).
+vtuber-brain 是 Director/Performer 分离 (ADR-001) 中的 Director。接收 context (chat、观众信号、内部状态),完成推理与记忆检索,决定采用哪个 persona 与调用哪个 skill,再通过 gRPC 向 vtuber-voice emit ConversationDirective (text_prompt + voice_prompt)。skill (game/sing/policy/strategy) 以 typed tool 注册,brain 通过 tool-use 协议 dispatch。长期记忆存于 Postgres + pgvector;character lore 启动时从 vtuber-commons 加载;Mojo 承担热推理 kernel (RAG re-rank、意图分类);Python 负责 LLM (Ollama/vLLM) 服务。
 
 ## ✨ 特性 (Features)
-> [AI: TRANSLATE all 3 Features into SIMPLIFIED CHINESE here]
+- 🚀 **Director 循环 —— 接收 context → 选择 persona → 通过 gRPC ConversationDirective 向 vtuber-voice emit text_prompt 与 voice_prompt**
+- 🛡️ **Skill 路由 —— 以来自 vtuber-contracts 的 typed gRPC contract 向 game / sing / policy / strategy dispatch tool call**
+- 📊 **分层记忆 —— 短期 (会话内进程内)、长期 (Postgres + pgvector)、character lore (启动时从 vtuber-commons 加载)**
 
 ## 🛠️ 快速开始 (Quick Start)
-> [AI: TRANSLATE getting_started_instructions into SIMPLIFIED CHINESE here]
+```bash
+# 安装 Rust toolchain (rustup)、Python 3.12+、带 pgvector 扩展的 Postgres 16+,运行 cargo build 与 pip install -r python/requirements.txt,.env 中设置 OLLAMA_HOST 或 VLLM_URL,然后 cargo run 在 8081 端口启动 brain
+```
 
 ## 🗺️ 导航 (Navigation)
 - 🏗️ **[架构 (Architecture)](../ARCHITECTURE.md)**
