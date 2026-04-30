@@ -1,0 +1,10 @@
+[package]
+name = "brain-grpc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+brain-proto = { path = "../brain-proto" }
+tonic = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
