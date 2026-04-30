@@ -6,6 +6,17 @@
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── crates
+│   ├── brain-core
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       └── lib.rs
+│   ├── brain-grpc
+│   │   ├── Cargo.toml
+│   │   └── src
+│   │       ├── bin
+│   │       │   └── server.rs
+│   │       ├── lib.rs
+│   │       └── server.rs
 │   └── brain-proto
 │       ├── build.rs
 │       ├── Cargo.toml
@@ -76,4 +87,4 @@
 ├── user_screenshot.png
 └── VISION.md
 
-23 directories, 54 files
+28 directories, 60 files

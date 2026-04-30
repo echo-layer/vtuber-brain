@@ -168,7 +168,7 @@ git commit -m "feat: setup brain-proto crate with build.rs"
 - Create: `crates/brain-grpc/src/lib.rs`
 - Create: `crates/brain-grpc/src/server.rs`
 
-- [ ] **Step 1: Setup brain-grpc Cargo.toml**
+- [x] **Step 1: Setup brain-grpc Cargo.toml**
 
 ```toml
 [package]
@@ -183,7 +183,7 @@ tokio = { workspace = true }
 tracing = { workspace = true }
 ```
 
-- [ ] **Step 2: Implement BrainService server**
+- [x] **Step 2: Implement BrainService server**
 
 ```rust
 use brain_proto::brain::brain_service_server::BrainService;
@@ -198,7 +198,7 @@ impl BrainService for MyBrainService {
     async fn push_context(
         &self,
         request: Request<ContextRequest>,
-    ) -> Result<Response<ContextResponse>, Status> {
+    ) -> Result<Result<Response<ContextResponse>, Status>> {
         let r = request.into_inner();
         println!("Received context from {}: {}", r.user_id, r.message);
         
@@ -210,7 +210,7 @@ impl BrainService for MyBrainService {
 }
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add crates/brain-grpc/
@@ -219,7 +219,7 @@ git commit -m "feat: implement basic gRPC server for PushContext"
 
 ### Task 5: Core Loop Integration Mock
 
-- [ ] **Step 1: Create brain-grpc server binary**
+- [x] **Step 1: Create brain-grpc server binary**
 
 Create: `crates/brain-grpc/src/bin/server.rs`
 
@@ -244,12 +244,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-- [ ] **Step 2: Verify binary build**
+- [x] **Step 2: Verify binary build**
 
 Run: `cargo build --bin server`
 Expected: Success
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add crates/brain-grpc/src/bin/server.rs
