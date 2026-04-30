@@ -41,6 +41,7 @@
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug_report.yml
 │   │   └── feature_request.yml
+│   ├── labeler.yml
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
 │       ├── badges.yml
@@ -87,4 +88,4 @@
 ├── TROUBLESHOOTING.md
 └── VISION.md
 
-28 directories, 60 files
+28 directories, 61 files
