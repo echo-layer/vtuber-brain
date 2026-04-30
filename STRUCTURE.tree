@@ -1,9 +1,18 @@
 .
 ├── ARCHITECTURE.md
+├── Cargo.lock
 ├── Cargo.toml
 ├── CLAUDE.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── crates
+│   └── brain-proto
+│       ├── build.rs
+│       ├── Cargo.toml
+│       ├── proto
+│       │   └── brain.proto
+│       └── src
+│           └── lib.rs
 ├── DEPLOYMENT_GUIDE.md
 ├── DESIGN_DECISIONS.md
 ├── docs
@@ -67,4 +76,4 @@
 ├── user_screenshot.png
 └── VISION.md
 
-19 directories, 49 files
+23 directories, 54 files

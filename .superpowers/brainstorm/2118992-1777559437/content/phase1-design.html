@@ -1,0 +1,59 @@
+<h2>Phase 1 Design: Core Loop & gRPC Foundation</h2>
+<p class="subtitle">เน้นการสร้าง "กระดูกสันหลัง" ของระบบและการสื่อสารใน Ecosystem</p>
+
+<div class="section">
+  <h3>1. แผนการสร้างโครงสร้างพื้นฐาน (Internal)</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-body">
+        <h4>Rust Workspace Setup</h4>
+        <p>จัดโครงสร้าง Cargo.toml และโฟลเดอร์สำหรับ <code>brain-core</code>, <code>brain-grpc</code> และ <code>brain-skills</code></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h4>Protobuf Definitions</h4>
+        <p>สร้างไฟล์ <code>.proto</code> สำหรับ ConversationDirective และการสื่อสารกับ Skill ต่างๆ เพื่อเป็นมาตรฐานกลาง</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>2. กลยุทธ์การทำงานร่วมกับ Repo อื่น (External)</h3>
+  <div class="mockup">
+    <div class="mockup-header">Cross-Repo Communication Protocol</div>
+    <div class="mockup-body">
+      <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 10px; border-radius: 4px;">
+        <div class="label" style="color: #d73a49;">GitHub Issue Strategy</div>
+        <strong>เมื่อพบว่า vtuber-voice ยังไม่รองรับ Directive ใหม่:</strong>
+        <ul style="font-size: 13px; margin-top: 5px;">
+          <li>❌ ห้ามแก้โค้ดใน <code>vtuber-voice</code></li>
+          <li>✅ สร้าง Issue ใน <code>vtuber-voice</code> พร้อมรายละเอียด Proto spec</li>
+          <li>✅ ใช้ Mock service ใน <code>vtuber-brain</code> เพื่อทดสอบไปก่อน</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>คำถามเพื่อความชัดเจน:</h3>
+  <p>ในส่วนของ gRPC คุณต้องการให้ <strong>vtuber-brain</strong> ทำหน้าที่เป็น:</p>
+  <div class="options">
+    <div class="option" data-choice="server_only" onclick="toggleSelect(this)">
+      <div class="letter">1</div>
+      <div class="content">
+        <h3>Server Only</h3>
+        <p>รอรับการเชื่อมต่อจาก API หรือ Service อื่นๆ อย่างเดียว</p>
+      </div>
+    </div>
+    <div class="option" data-choice="hybrid" onclick="toggleSelect(this)">
+      <div class="letter">2</div>
+      <div class="content">
+        <h3>Hybrid (Recommended)</h3>
+        <p>เป็นทั้ง Server (รับ Context จาก API) และ Client (ส่งคำสั่งไป Voice / เรียกใช้ Skills)</p>
+      </div>
+    </div>
+  </div>
+</div>

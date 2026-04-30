@@ -1,0 +1,89 @@
+<h2>Ecosystem Boundaries & Hybrid Flow (Final Check)</h2>
+<p class="subtitle">การแบ่งหน้าที่อย่างชัดเจนเพื่อป้องกันการทำงานทับซ้อน (No Overlap)</p>
+
+<div class="section">
+  <span class="label">Step 1: Separation of Concerns</span>
+  <h3>1. ตารางความรับผิดชอบ</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ฟีเจอร์ / หน้าที่</th>
+        <th>vtuber-api</th>
+        <th style="background: rgba(56, 189, 248, 0.1);">vtuber-brain</th>
+        <th>vtuber-voice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ดึงข้อมูลแชท / เหตุการณ์ (Twitch/YouTube)</td>
+        <td style="color: var(--success); font-weight: bold;">YES</td>
+        <td>NO</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>การคิดและตัดสินใจ (Reasoning / RAG)</td>
+        <td>NO</td>
+        <td style="background: rgba(56, 189, 248, 0.1); color: var(--success); font-weight: bold;">YES</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>การเลือกใช้ทักษะ (Skill Dispatching)</td>
+        <td>NO</td>
+        <td style="background: rgba(56, 189, 248, 0.1); color: var(--success); font-weight: bold;">YES</td>
+        <td>NO</td>
+      </tr>
+      <tr>
+        <td>การสังเคราะห์เสียง / ลิปซิงค์ (TTS / Lipsync)</td>
+        <td>NO</td>
+        <td>NO</td>
+        <td style="color: var(--success); font-weight: bold;">YES</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <span class="label">Step 2: Data Flow</span>
+  <h3>2. แผนผังการสื่อสาร (Hybrid gRPC)</h3>
+  <div class="mockup">
+    <div class="mockup-header">Hybrid Communication Flow</div>
+    <div class="mockup-body">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+        <div style="text-align: center;">
+          <div class="placeholder" style="padding: 10px; width: 120px;">vtuber-api</div>
+          <div style="font-size: 0.75rem; margin-top: 0.5rem;">Input Source</div>
+        </div>
+        <div style="flex-grow: 1; text-align: center; border-bottom: 2px solid var(--success); margin-bottom: 20px; position: relative;">
+          <span style="font-size: 0.75rem; color: var(--success); position: absolute; top: -20px; left: 50%; transform: translateX(-50%);">gRPC Push</span>
+        </div>
+        <div style="text-align: center;">
+          <div class="placeholder" style="padding: 20px; width: 160px; border: 2px solid var(--primary); background: rgba(56, 189, 248, 0.05);">
+            <strong>vtuber-brain</strong>
+          </div>
+          <div style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--primary);">Reasoning Center</div>
+        </div>
+        <div style="flex-grow: 1; text-align: center; border-bottom: 2px solid var(--error); margin-bottom: 20px; position: relative;">
+          <span style="font-size: 0.75rem; color: var(--error); position: absolute; top: -20px; left: 50%; transform: translateX(-50%);">Directive</span>
+        </div>
+        <div style="text-align: center;">
+          <div class="placeholder" style="padding: 10px; width: 120px;">vtuber-voice</div>
+          <div style="font-size: 0.75rem; margin-top: 0.5rem;">Output Performer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="label">Decision</span>
+  <h3>คุณเห็นชอบกับขอบเขตงานนี้หรือไม่?</h3>
+  <div class="options">
+    <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+      <div class="letter">✔</div>
+      <div class="content">
+        <h3>Approve & Proceed</h3>
+        <p>โครงสร้างและขอบเขตงานถูกต้อง เริ่มเขียน Design Spec ได้เลย</p>
+      </div>
+    </div>
+  </div>
+</div>

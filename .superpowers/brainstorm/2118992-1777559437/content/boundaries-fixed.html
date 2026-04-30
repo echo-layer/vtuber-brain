@@ -1,0 +1,107 @@
+<h2>Ecosystem Boundaries & Hybrid Flow (Fixed)</h2>
+<p class="subtitle">การแบ่งหน้าที่อย่างชัดเจนเพื่อป้องกันการทำงานทับซ้อน (No Overlap)</p>
+
+<div class="section">
+  <h3>1. ตารางความรับผิดชอบ (Separation of Concerns)</h3>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px; background: white;">
+    <thead>
+      <tr style="background: #f4f4f4;">
+        <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">ฟีเจอร์ / หน้าที่</th>
+        <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">vtuber-api</th>
+        <th style="border: 1px solid #ddd; padding: 10px; text-align: center; background: #e7f3ff; color: #0056b3;">vtuber-brain</th>
+        <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">vtuber-voice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px;">ดึงข้อมูลแชท / เหตุการณ์ (Twitch/YouTube)</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: green; font-weight: bold;">YES</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px;">การคิดและตัดสินใจ (Reasoning / RAG)</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; background: #e7f3ff; color: green; font-weight: bold;">YES</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px;">การเลือกใช้ทักษะ (Skill Dispatching)</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; background: #e7f3ff; color: green; font-weight: bold;">YES</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px;">การสังเคราะห์เสียง / ลิปซิงค์ (TTS / Lipsync)</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #ccc;">NO</td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center; color: green; font-weight: bold;">YES</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h3>2. แผนผังการสื่อสาร (Hybrid gRPC Flow)</h3>
+  <div class="mockup">
+    <div class="mockup-header">Hybrid Communication (No Overlap)</div>
+    <div class="mockup-body" style="background: #fafafa; padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+        
+        <!-- API -->
+        <div style="text-align: center;">
+          <div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; width: 100px; background: white;">
+            <strong>vtuber-api</strong>
+          </div>
+          <div style="font-size: 11px; margin-top: 5px; color: #666;">(Source)</div>
+        </div>
+
+        <div style="flex-grow: 1; text-align: center; color: #28a745;">
+          <div style="font-size: 12px; margin-bottom: 5px;">gRPC Push</div>
+          <div style="height: 2px; background: #28a745; width: 100%;"></div>
+        </div>
+
+        <!-- BRAIN -->
+        <div style="text-align: center;">
+          <div style="border: 2px solid #007bff; padding: 15px; border-radius: 8px; width: 150px; background: #e7f3ff;">
+            <strong>vtuber-brain</strong><br/>
+            <small>(Hybrid Center)</small>
+          </div>
+        </div>
+
+        <div style="flex-grow: 1; text-align: center; color: #dc3545;">
+          <div style="font-size: 12px; margin-bottom: 5px;">Directive</div>
+          <div style="height: 2px; background: #dc3545; width: 100%;"></div>
+        </div>
+
+        <!-- VOICE -->
+        <div style="text-align: center;">
+          <div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; width: 100px; background: white;">
+            <strong>vtuber-voice</strong>
+          </div>
+          <div style="font-size: 11px; margin-top: 5px; color: #666;">(Performer)</div>
+        </div>
+
+      </div>
+      
+      <div style="margin-top: 30px; border-top: 1px dashed #ccc; padding-top: 15px; font-size: 13px;">
+        <strong>กลยุทธ์การจัดการ Repo อื่น:</strong> หาก <code>voice</code> หรือ <code>api</code> ยังไม่มีฟีเจอร์ที่ต้องการ -> 
+        <span style="color: #d73a49; font-weight: bold;">สร้าง GitHub Issue รายงาน</span> (ห้ามแก้ไขโค้ดที่นั่นโดยตรง)
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>สรุปขอบเขตใน Phase 1:</h3>
+  <p>หากตารางและความสัมพันธ์นี้ดูถูกต้องแล้ว ผมพร้อมจะเริ่มร่าง <strong>Design Specification</strong> ครับ</p>
+  <div class="options">
+    <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+      <div class="letter">✔</div>
+      <div class="content">
+        <h3>Approve & Start Design Spec</h3>
+        <p>ข้อมูลถูกต้องตามต้องการ เริ่มวางโครงสร้าง Rust Workspace ได้เลย</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<h2>Ecosystem Boundaries & Hybrid Flow</h2>
+<p class="subtitle">การแบ่งหน้าที่อย่างชัดเจนเพื่อป้องกันการทำงานทับซ้อน (No Overlap)</p>
+
+<div class="section">
+  <h3>1. ตารางความรับผิดชอบ (Separation of Concerns)</h3>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+    <thead>
+      <tr style="background: #f4f4f4;">
+        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Feature</th>
+        <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">vtuber-api</th>
+        <th style="border: 1px solid #ddd; padding: 8px; text-align: center; background: #e7f3ff;">vtuber-brain</th>
+        <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">vtuber-voice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Fetch Chat/Events</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">✅</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Reasoning/RAG</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; background: #e7f3ff;">✅</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Skill Dispatching</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; background: #e7f3ff;">✅</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">TTS/Audio Gen</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: #ccc;">❌</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">✅</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h3>2. Hybrid gRPC Communication Path</h3>
+  <div class="mockup">
+    <div class="mockup-header">Non-Overlapping Data Flow</div>
+    <div class="mockup-body">
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 100px; border: 1px solid #ccc; padding: 5px; border-radius: 4px; font-size: 12px; text-align: center;">vtuber-api</div>
+          <div style="flex-grow: 1; border-top: 2px solid #28a745; position: relative;">
+             <span style="position: absolute; top: -15px; left: 30%; font-size: 10px; color: #28a745;">gRPC Request (Input)</span>
+          </div>
+          <div style="width: 120px; border: 2px solid #007bff; padding: 5px; border-radius: 4px; font-size: 12px; text-align: center; background: #e7f3ff;">
+            <strong>vtuber-brain</strong><br/>(Server)
+          </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 120px; border: 2px solid #007bff; padding: 5px; border-radius: 4px; font-size: 12px; text-align: center; background: #e7f3ff;">
+            <strong>vtuber-brain</strong><br/>(Client)
+          </div>
+          <div style="flex-grow: 1; border-top: 2px solid #dc3545; position: relative;">
+             <span style="position: absolute; top: -15px; left: 20%; font-size: 10px; color: #dc3545;">ConversationDirective</span>
+          </div>
+          <div style="width: 100px; border: 1px solid #ccc; padding: 5px; border-radius: 4px; font-size: 12px; text-align: center;">vtuber-voice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>สรุปขอบเขตใน Phase 1:</h3>
+  <p>คุณเห็นด้วยกับการแบ่งหน้าที่แบบนี้ไหมครับ? หากตกลง ผมจะเริ่มร่าง <strong>Specification Document</strong> สำหรับโครงสร้าง Rust Workspace ในเทิร์นถัดไปครับ</p>
+</div>
