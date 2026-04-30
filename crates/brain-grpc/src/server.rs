@@ -12,11 +12,12 @@ impl BrainService for MyBrainService {
         request: Request<ContextRequest>,
     ) -> Result<Response<ContextResponse>, Status> {
         let r = request.into_inner();
-        println!("Received context from {}: {}", r.user_id, r.message);
+        tracing::info!("Received context from {}: {}", r.user_id, r.message);
 
         Ok(Response::new(ContextResponse {
             accepted: true,
             request_id: "mock-uuid".to_string(),
         }))
     }
+
 }
