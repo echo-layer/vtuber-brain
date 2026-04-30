@@ -47,6 +47,7 @@
 │       ├── ci.yml
 │       ├── pr_automation.yml
 │       └── security.yml
+├── .gitignore
 ├── GOVERNANCE.md
 ├── LICENSE.md
 ├── locales
@@ -84,7 +85,6 @@
 │               └── server-stopped
 ├── SUPPORT.md
 ├── TROUBLESHOOTING.md
-├── user_screenshot.png
 └── VISION.md
 
 28 directories, 60 files

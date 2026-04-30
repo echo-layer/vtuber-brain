@@ -19,5 +19,4 @@ impl BrainService for MyBrainService {
             request_id: "mock-uuid".to_string(),
         }))
     }
-
 }
