@@ -1,0 +1,21 @@
+# Configuration for actions/labeler
+
+rust:
+  - changed-files:
+    - any-glob-to-any-file: ['crates/**', 'Cargo.toml', 'Cargo.lock']
+
+python:
+  - changed-files:
+    - any-glob-to-any-file: ['python/**', 'requirements.txt', 'pyproject.toml']
+
+mojo:
+  - changed-files:
+    - any-glob-to-any-file: ['**/*.mojo', 'mojoproject.toml']
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['**/*.md', 'docs/**']
+
+github:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/**']
