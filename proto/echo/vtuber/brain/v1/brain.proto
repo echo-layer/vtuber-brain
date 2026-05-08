@@ -4,17 +4,17 @@ package echo.vtuber.brain.v1;
 
 // BrainService defines the interface for vtuber-api to feed context into the reasoning core.
 service BrainService {
-  rpc PushContext (ContextRequest) returns (ContextResponse);
+  rpc PushContext (PushContextRequest) returns (PushContextResponse);
 }
 
-message ContextRequest {
+message PushContextRequest {
   string session_id = 1;
   string user_id = 2;
   string message = 3;
   map<string, string> metadata = 4;
 }
 
-message ContextResponse {
+message PushContextResponse {
   bool accepted = 1;
   string request_id = 2;
 }
