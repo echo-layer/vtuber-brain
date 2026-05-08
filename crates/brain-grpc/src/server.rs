@@ -1,5 +1,5 @@
-use brain_proto::brain::brain_service_server::BrainService;
-use brain_proto::brain::{ContextRequest, ContextResponse};
+use brain_proto::brain::v1::brain_service_server::BrainService;
+use brain_proto::brain::v1::{ContextRequest, ContextResponse};
 use tonic::{Request, Response, Status};
 
 #[derive(Default)]

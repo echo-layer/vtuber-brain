@@ -2,6 +2,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     tonic_build::configure()
         .build_server(true)
         .build_client(true)
-        .compile_protos(&["proto/brain.proto"], &["proto"])?;
+        .compile_protos(
+            &[
+                "../../proto/echo/vtuber/brain/v1/brain.proto",
+                "../../proto/echo/vtuber/voice/v1/voice.proto",
+            ],
+            &["../../proto"],
+        )?;
     Ok(())
 }

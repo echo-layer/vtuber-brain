@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package echo.vtuber.voice.v1;
+
+// VoiceService defines the interface for the Performer (vtuber-voice) to receive directives.
+service VoiceService {
+  rpc EmitDirective (DirectiveRequest) returns (DirectiveResponse);
+}
+
+message DirectiveRequest {
+  string text_prompt = 1;
+  string voice_prompt = 2;
+  map<string, string> commands = 3;
+}
+
+message DirectiveResponse {
+  bool success = 1;
+}
