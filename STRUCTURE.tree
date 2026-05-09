@@ -1,5 +1,6 @@
 .
 ├── ARCHITECTURE.md
+├── buf.yaml
 ├── Cargo.lock
 ├── Cargo.toml
 ├── CLAUDE.md
@@ -20,21 +21,14 @@
 │   └── brain-proto
 │       ├── build.rs
 │       ├── Cargo.toml
-│       ├── proto
-│       │   └── brain.proto
 │       └── src
 │           └── lib.rs
 ├── DEPLOYMENT_GUIDE.md
 ├── DESIGN_DECISIONS.md
 ├── docs
-│   ├── specs
-│   │   └── ecosystem
-│   │       └── .gitkeep
-│   └── superpowers
-│       ├── plans
-│       │   └── 2026-04-30-foundation-core-loop.md
-│       └── specs
-│           └── 2026-04-30-foundation-core-loop-design.md
+│   └── specs
+│       └── ecosystem
+│           └── 2026-05-01-canonical-proto-standard.md
 ├── FAQ.md
 ├── GEMINI.md
 ├── .github
@@ -59,33 +53,22 @@
 ├── PHILOSOPHY.md
 ├── .pre-commit-config.yaml
 ├── PRINCIPLES.md
+├── proto
+│   └── echo
+│       └── vtuber
+│           ├── brain
+│           │   └── v1
+│           │       └── brain.proto
+│           └── voice
+│               └── v1
+│                   └── voice.proto
 ├── README.md
 ├── ROADMAP.md
 ├── SECURITY.md
 ├── STRATEGY.md
 ├── STRUCTURE.tree
-├── .superpowers
-│   └── brainstorm
-│       ├── 1516087-1777552623
-│       │   ├── content
-│       │   │   ├── architecture-overview.html
-│       │   │   ├── boundaries.html
-│       │   │   └── phase1-design.html
-│       │   └── state
-│       │       ├── server.pid
-│       │       └── server-stopped
-│       └── 2118992-1777559437
-│           ├── content
-│           │   ├── architecture-overview.html
-│           │   ├── boundaries-fixed.html
-│           │   ├── boundaries.html
-│           │   ├── final-boundaries.html
-│           │   └── phase1-design.html
-│           └── state
-│               ├── server.pid
-│               └── server-stopped
 ├── SUPPORT.md
 ├── TROUBLESHOOTING.md
 └── VISION.md
 
-28 directories, 61 files
+23 directories, 49 files

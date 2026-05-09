@@ -1,5 +1,30 @@
-/target
+# Rust
 /target/
-node_modules/
+Cargo.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Mojo
+build/
+.mojo_cache/
+
+# IDEs
+.vscode/
+.idea/
+
+# System
 .DS_Store
+Thumbs.db
+
+# Logs
 *.log
+
+# Project specific
+.superpowers/
+docs/
+STRUCTURE.tree

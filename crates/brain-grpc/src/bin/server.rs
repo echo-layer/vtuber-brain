@@ -1,5 +1,5 @@
 use brain_grpc::server::MyBrainService;
-use brain_proto::brain::brain_service_server::BrainServiceServer;
+use brain_proto::brain::v1::brain_service_server::BrainServiceServer;
 use tonic::transport::Server;
 
 #[tokio::main]
