@@ -40,6 +40,14 @@ jobs:
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup Private Registry
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          mkdir -p .cargo
+          cat <<EOF > .cargo/config.toml
+          [registries.vtuber-registry]
+          index = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+          EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
         uses: dtolnay/rust-toolchain@stable
@@ -69,6 +77,14 @@ jobs:
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup Private Registry
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          mkdir -p .cargo
+          cat <<EOF > .cargo/config.toml
+          [registries.vtuber-registry]
+          index = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+          EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
         uses: dtolnay/rust-toolchain@stable
