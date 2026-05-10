@@ -1,6 +1,8 @@
 .
 ├── ARCHITECTURE.md
 ├── buf.yaml
+├── .cargo
+│   └── config.toml
 ├── Cargo.lock
 ├── Cargo.toml
 ├── CLAUDE.md
@@ -26,9 +28,14 @@
 ├── DEPLOYMENT_GUIDE.md
 ├── DESIGN_DECISIONS.md
 ├── docs
-│   └── specs
-│       └── ecosystem
-│           └── 2026-05-01-canonical-proto-standard.md
+│   ├── specs
+│   │   └── ecosystem
+│   │       └── 2026-05-01-canonical-proto-standard.md
+│   └── superpowers
+│       ├── plans
+│       │   └── 2026-05-01-private-registry-integration.md
+│       └── specs
+│           └── 2026-05-01-private-registry-integration.md
 ├── FAQ.md
 ├── GEMINI.md
 ├── .github
@@ -71,4 +78,4 @@
 ├── TROUBLESHOOTING.md
 └── VISION.md
 
-23 directories, 49 files
+27 directories, 52 files
