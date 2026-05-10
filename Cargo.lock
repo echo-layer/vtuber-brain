@@ -142,6 +142,7 @@ dependencies = [
  "prost",
  "tonic",
  "tonic-build",
+ "vtuber-contracts",
 ]
 
 [[package]]
@@ -1091,6 +1092,18 @@ name = "unicode-xid"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
+
+[[package]]
+name = "vtuber-contracts"
+version = "0.1.0"
+source = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+checksum = "7f8f2c502447e2385948167ca8a2b1f0815a85798ffc3a958ae9afa703bb0464"
+dependencies = [
+ "prost",
+ "prost-types",
+ "tonic",
+ "tonic-build",
+]
 
 [[package]]
 name = "want"
