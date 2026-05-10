@@ -63,12 +63,9 @@
 ├── proto
 │   └── echo
 │       └── vtuber
-│           ├── brain
-│           │   └── v1
-│           │       └── brain.proto
-│           └── voice
+│           └── brain
 │               └── v1
-│                   └── voice.proto
+│                   └── brain.proto
 ├── README.md
 ├── ROADMAP.md
 ├── SECURITY.md
@@ -78,4 +75,4 @@
 ├── TROUBLESHOOTING.md
 └── VISION.md
 
-27 directories, 52 files
+25 directories, 51 files
