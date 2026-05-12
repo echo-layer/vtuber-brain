@@ -14,7 +14,7 @@ permissions:
 jobs:
   security-smoke-test:
     name: Security baseline
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Baseline check
@@ -23,7 +23,7 @@ jobs:
   
   rust-audit:
     name: Rust Dependency Audit
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Skip if no Cargo.toml
@@ -55,7 +55,7 @@ jobs:
   
   rust-clippy-security:
     name: Rust Static Analysis (SARIF)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       security-events: write
@@ -107,7 +107,7 @@ jobs:
   
   mojo-security:
     name: Mojo Security Check
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Mojo static analysis (skipped until mojoproject.toml exists)

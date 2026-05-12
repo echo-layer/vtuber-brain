@@ -8,7 +8,7 @@ on:
 jobs:
   bootstrap-smoke-test:
     name: Bootstrap smoke test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Detect source stacks
@@ -25,7 +25,7 @@ jobs:
   
   rust-lint:
     name: Rust Lint & Format
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Skip if no Cargo.toml
@@ -62,7 +62,7 @@ jobs:
   
   rust-build-and-test:
     name: Rust Build & Test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Skip if no Cargo.toml
@@ -107,7 +107,7 @@ jobs:
   
   mojo-build:
     name: Mojo Build & Test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Mojo build (skipped until mojoproject.toml exists)
