@@ -1,3 +1,6 @@
+# CI for vtuber-brain
+# Requirement: self-hosted runner must have internet access to index.crates.io
+# and internal access to kellnr.cntm.labs
 name: "CI for vtuber-brain"
 on:
   push:
