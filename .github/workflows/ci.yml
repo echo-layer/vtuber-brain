@@ -49,7 +49,7 @@ jobs:
           mkdir -p .cargo
           cat <<EOF > .cargo/config.toml
           [registries.vtuber-registry]
-          index = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+          index = "sparse+http://192.168.1.5:31500/api/v1/crates/"
           EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
@@ -86,7 +86,7 @@ jobs:
           mkdir -p .cargo
           cat <<EOF > .cargo/config.toml
           [registries.vtuber-registry]
-          index = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+          index = "sparse+http://192.168.1.5:31500/api/v1/crates/"
           EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
