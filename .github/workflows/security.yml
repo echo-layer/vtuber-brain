@@ -35,6 +35,11 @@ jobs:
           else
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
+      - name: Setup Internal DNS
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          # Add internal registry to hosts file to bypass DNS resolution issues
+          echo "192.168.1.5 kellnr.cntm.labs" | sudo tee -a /etc/hosts || echo "192.168.1.5 kellnr.cntm.labs" >> /etc/hosts || true
       - name: Setup Private Registry
         if: steps.guard.outputs.skip != 'true'
         run: |
@@ -74,6 +79,11 @@ jobs:
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup Internal DNS
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          # Add internal registry to hosts file to bypass DNS resolution issues
+          echo "192.168.1.5 kellnr.cntm.labs" | sudo tee -a /etc/hosts || echo "192.168.1.5 kellnr.cntm.labs" >> /etc/hosts || true
       - name: Setup Private Registry
         if: steps.guard.outputs.skip != 'true'
         run: |
