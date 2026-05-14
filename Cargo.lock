@@ -1197,7 +1197,7 @@ checksum = "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861"
 [[package]]
 name = "vtuber-commons"
 version = "0.0.1"
-source = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+source = "sparse+http://192.168.1.5:31500/api/v1/crates/"
 checksum = "862a0e58bc5b427ab5ff1bd0468ebf3f7b69bcdef41b351f63ead7ccdabe7f3b"
 dependencies = [
  "include_dir",
@@ -1211,7 +1211,7 @@ dependencies = [
 [[package]]
 name = "vtuber-contracts"
 version = "0.1.0"
-source = "sparse+http://kellnr.cntm.labs:31500/api/v1/crates/"
+source = "sparse+http://192.168.1.5:31500/api/v1/crates/"
 checksum = "7f8f2c502447e2385948167ca8a2b1f0815a85798ffc3a958ae9afa703bb0464"
 dependencies = [
  "prost",
