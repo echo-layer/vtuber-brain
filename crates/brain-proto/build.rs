@@ -3,10 +3,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build_server(true)
         .build_client(true)
         .compile_protos(
-            &[
-                "../../proto/echo/vtuber/brain/v1/brain.proto",
-                "../../proto/echo/vtuber/voice/v1/voice.proto",
-            ],
+            &["../../proto/echo/vtuber/brain/v1/brain.proto"],
             &["../../proto"],
         )?;
     Ok(())

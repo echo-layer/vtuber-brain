@@ -1,3 +1,6 @@
+# CI for vtuber-brain
+# Requirement: self-hosted runner must have internet access to index.crates.io
+# and internal access to kellnr.cntm.labs
 name: "CI for vtuber-brain"
 on:
   push:
@@ -8,7 +11,7 @@ on:
 jobs:
   bootstrap-smoke-test:
     name: Bootstrap smoke test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Detect source stacks
@@ -25,7 +28,7 @@ jobs:
   
   rust-lint:
     name: Rust Lint & Format
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Skip if no Cargo.toml
@@ -40,6 +43,19 @@ jobs:
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup Internal DNS
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          # Add internal registry to hosts file to bypass DNS resolution issues
+          echo "192.168.1.5 kellnr.cntm.labs" | sudo tee -a /etc/hosts || echo "192.168.1.5 kellnr.cntm.labs" >> /etc/hosts || true
+      - name: Setup Private Registry
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          mkdir -p .cargo
+          cat <<EOF > .cargo/config.toml
+          [registries.vtuber-registry]
+          index = "sparse+http://192.168.1.5:31500/api/v1/crates/"
+          EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
         uses: dtolnay/rust-toolchain@stable
@@ -54,7 +70,7 @@ jobs:
   
   rust-build-and-test:
     name: Rust Build & Test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Skip if no Cargo.toml
@@ -69,6 +85,19 @@ jobs:
       - name: Install dependencies
         if: steps.guard.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Setup Internal DNS
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          # Add internal registry to hosts file to bypass DNS resolution issues
+          echo "192.168.1.5 kellnr.cntm.labs" | sudo tee -a /etc/hosts || echo "192.168.1.5 kellnr.cntm.labs" >> /etc/hosts || true
+      - name: Setup Private Registry
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          mkdir -p .cargo
+          cat <<EOF > .cargo/config.toml
+          [registries.vtuber-registry]
+          index = "sparse+http://192.168.1.5:31500/api/v1/crates/"
+          EOF
       - name: Setup Rust
         if: steps.guard.outputs.skip != 'true'
         uses: dtolnay/rust-toolchain@stable
@@ -91,7 +120,7 @@ jobs:
   
   mojo-build:
     name: Mojo Build & Test
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Mojo build (skipped until mojoproject.toml exists)
